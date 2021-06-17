@@ -49,12 +49,11 @@ sx_binary = np.zeros_like(scaled_sobel)
 # Keep only derivative values that are in the margin of interest
 sx_binary[(scaled_sobel >= 30) & (scaled_sobel <= 255)] = 1
 
-
 The lane line detection is performed on processed binary thresholded images that have already been undistorted and warped.
 
 # Take a histogram of the bottom half of the image
 histogram = np.sum(binary_warped[binary_warped.shape[0]//2:,:], axis=0)
-# Find the peak of the left and right halves of the histogram
+
 # These will be the starting point for the left and right lines
 midpoint = np.int(histogram.shape[0]//2)
 leftx_base = np.argmax(histogram[:midpoint])
